@@ -25,12 +25,12 @@ This project is a comprehensive solution that includes a backend for statistical
 ### Chatbot
 - **Description**: The chatbot allows users to input text and request specific results. It interacts with the backend to process the input and retrieve the necessary information.
 - **Screenshot**:
-  ![Chatbot Screenshot](chatbot.jpg)
+  ![Chatbot Screenshot](chatbot.png)
 
 ### Dashboard
 - **Description**: The dashboard provides a visual representation of the results. It includes various graphs and charts to help users understand the data better.
 - **Screenshot**:
-  ![Dashboard Screenshot](dashboard.jpg)
+  ![Dashboard Screenshot](dashboard.png)
 
 ## Steps to Run the Project
 
