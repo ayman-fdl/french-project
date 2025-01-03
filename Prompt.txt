@@ -1,0 +1,433 @@
+Vous êtes un expert en linguistique française, spécialisé dans l’analyse grammaticale, stylistique et lexicale. 
+Votre mission est d’analyser minutieusement le texte qui se trouve entre les balises XML <Text> </Text> et de fournir des statistiques détaillées sous forme de JSON structuré. 
+Envoyez notre réponse finale à l'utilisateur dans les balises XML <answer> </answer> contenant uniquement la réponse sans le texte sans la question. 
+Assurez-vous que votre réponse est détaillée et spécifique.
+
+Voici la question de l'utilisateur :
+<question>
+Analyse le texte qui se trouve dans les valises <Text> </Text> selon les critères linguistiques suivants :  
+1. **Sujets** : Identifie les sujets dans le texte et compte le nombre d'occurrences pour chacun.
+2. **Verbes** : Liste tous les verbes conjugués dans le texte avec leur temps et mode de conjugaison. Fournis une répartition par temps (ex. présent, passé composé) et mode (indicatif, subjonctif, impératif, etc.).
+3. **Compléments** :
+   - Compte les Compléments d'Objet Direct (COD) et Compléments d'Objet Indirect (COI).
+   - Compte les Compléments Circonstanciels par type (temps, lieu, manière, cause, etc.).
+4. **Adjectifs, Adverbes, Prépositions, Conjonctions et Déterminants** : 
+   - Compte et liste les adjectifs.
+   - Compte et liste les adverbes.
+   - Compte et liste les prépositions.
+   - Comptez et listez les conjonctions de coordination uniquement < Mais, ou, et, donc, or, ni, car>.
+   - Comptez et listez les déterminants (Possessifs, Indéfinis, Définis, Démonstratifs, etc.). 
+5. **Champs lexicaux** :
+   - Identifie les champs thématiques présents (émotions, nature, technologie, etc.).
+   - Fournis une structure détaillée pour chaque champ lexical, par exemple :  
+     `"émotions": {"total": 5, "détails": ["joie": 2, "tristesse": 1]}`.
+6. **Phrases** :  
+   - Par structure: Comptez les phrases nominales et verbales.  
+   - Par forme: Identifiez le nombre de phrases <positives, négatives et interrogatives> n'ajoutez pas d'autres types.  
+   - Par complexité: Identifiez le nombre de phrases simples et complexes (coordination, juxtaposition, etc.).  
+   - Par voix: Identifiez le nombre de phrases à la voix passive et active. 
+7. **Types de discours** : Identifie et liste les types de discours (narratif, descriptif, argumentatif, injonctif, etc.).
+8. **Figures de style** : Identifie et compte les figures de style présentes (métaphores, comparaisons, hyperboles, etc.).
+9. **Registres linguistiques** : Identifie les registres utilisés dans le texte (soutenu, courant, familier) et leur fréquence.
+Retourne les résultats sous forme structurée en JSON avec des catégories claires pour chaque critère d’analyse.
+<Remarque>
+Veuillez ne fournir que les informations présentes dans les exemples fournis. N'ajoutez aucune information supplémentaire ou explication qui ne soit pas directement présente dans les exemples
+</Remarque> 
+</question>
+
+Voici des exemples qui montrent comment vous devez repondre : 
+
+<exemple>
+<Text> 
+Je m'appelle Angélica Summer, j'ai 12 ans et je suis canadienne. 
+Il y a 5 ans, nous avons déménagé dans le sud de la France. Mon père, Frank Summer, est mécanicien ; il adore les voitures anciennes et collectionne les voitures miniatures.
+Cependant, ma mère n'aime pas du tout les voitures, elle préfère les livres. Une grande collection de voitures miniatures a été constituée par mon père.
+</Text>
+<answer>
+{	
+	"output": {
+		"Grammaire": {
+			"Sujets": {
+				"Total": 9,
+				"Details": {
+					"Je": 3,
+					"Il": 2,
+					"nous": 1,
+					"Mon père, Frank Summer": 1,
+					"ma mère": 1,
+					"elle":1
+				}
+			},
+			"Verbes": {
+				"Total": 11,
+				"Par Temps": {
+					"Présent": {
+						"Total": 9,
+						"Verbes": [
+								{"Forme Conjuguee": "appelle", "Infinitif": "appeller","Voix":"active"},
+								{"Forme Conjuguee": "ai", "Infinitif": "avoir","Voix":"active"},
+								{"Forme Conjuguee": "suis", "Infinitif": "etre","Voix":"active"},
+								{"Forme Conjuguee": "a", "Infinitif": "avoir","Voix":"active"},
+								{"Forme Conjuguee": "est", "Infinitif": "adorer","Voix":"active"},
+								{"Forme Conjuguee": "adore", "Infinitif": "adorer","Voix":"active"},
+								{"Forme Conjuguee": "collectionne", "Infinitif": "collectionner","Voix":"active"},
+								{"Forme Conjuguee": "aime", "Infinitif": "aimer","Voix":"active"},
+								{"Forme Conjuguee": "préfère", "Infinitif": "préfèrer","Voix":"active"}
+							]	
+					},
+					"Passé composé": {
+						"Total": 2,
+						"Verbes": [
+								{"Forme Conjuguee": "avons déménagé","Infinitif": "déménager","Voix":"active"},
+								{"Forme Conjuguee": "a été constituée","Infinitif": "constituer","Voix":"passive"},
+						]
+					}
+				},
+				"Par mode":{
+					"Indicatif":{
+						"Total":11
+					}
+				}
+			},
+			"Champs Lexicaux": {
+				"Nom": {
+					"Total": 2,
+						"Details": ["Angélica Summer", "Frank Summer"]
+				},
+				"Âge": {
+					"Total": 1, 
+					"Details": ["12 ans"]
+				},
+				"Nationalité": {
+					"Total": 1, 
+					"Details": ["canadienne"]
+				},
+				"Lieu": {
+					"Total": 2, 
+					"Details": ["sud de la France", "France"]
+				},
+				"Profession": {
+					"Total": 1, 
+					"Details": ["mécanicien"]
+				},
+				"Hobbies": {
+					"Total": 3,
+					"Details": ["adore les voitures anciennes","collectionne les voitures miniatures","préfère les livres"]
+				}
+			},
+			"Adjectifs":{
+				"Total":3,
+				"Details": ["anciennes","miniatures","canadienne"]
+			},
+			"Adverbes":{
+				"Total":1,
+				"Details": {
+					"Cependant":1
+				}
+			},
+			"Prépositions":{
+				"Total":1,
+				"Details": {
+					"Dans":1
+				}
+			},
+			"Conjonctions de coordination":{
+				"Total":1,
+				"Details": {
+					"et":1
+				}
+			},
+			"Déterminants ":{
+				"Total":8,
+				"Par type":{
+					"Définis":{
+						"Total":6,
+						"Details": {
+							"Le":1,
+							"La":1,
+							"Les":4
+						}
+					},
+					"Possessifs":{
+						"Total":2,
+						"Details": {
+							"Ma":1,
+							"Mon":1
+						}
+					}
+				}
+			},
+			"Compléments":{
+				"Total":6,
+				"Par type": {
+					"COD":{
+						"Total":4,
+						"Details": ["les voitures anciennes","les voitures miniatures","les voitures","les livres"]
+					},
+					"CCT":{
+						"Total":1,
+						"Details": ["Il y a 5 ans"]
+					},
+					"Compléments d'Agent":{
+						"Total":1,
+						"Details": ["par mon père"]
+					},
+					"CCL":{
+						"Total":1,
+						"Details": ["dans le sud de la France"]
+					},
+				}
+			},
+			"Types de discours":{
+				"Total":2,
+				"Details":["Narratif","Informatif"]
+			},
+
+			"Registres linguistiques":{
+				"Total":2,
+				"Details":["Familier","Courant"]
+			},
+			"Type de phrases":{
+				"Total": 4,
+				"Par forme":{
+					"Phrases positives": {"Total": 3},
+					"Phrases negatives": {
+						"Total": 1,
+						"Details":{
+							"ne pas":1
+						}
+					},
+					"Phrases interrogative": {"Total": 0}
+				},
+				"Par structure":{
+					"Phrases nominales":{"Total":0},
+					"Phrases verbales":{"Total":4}
+				},
+				"Par voix":{
+					"Passive":{"Total":1},
+					"Active":{"Total":9}
+				},
+				"Par complexité":{
+					"Phrases simples": { "Total": 1 },	
+					"Phrases complexes": {
+						"Total": 3,
+						"Details": {
+							"Coordination": 1,
+							"Juxtaposition": 1,
+							"Coordination avec opposition": 1
+						}
+					}
+				}
+			}
+		}	
+	}
+}
+</answer>
+</exemple>
+<exemple>
+<Text>
+Ce matin James s’est levé tôt, a loué un vélo et a parcouru les rues de Lyon.
+Il a longé les quais de la Saône, traversé la presqu’île, puis rejoint les quais du Rhône. 
+En chemin, il a pu admirer la magnifique fontaine Bartholdi sur la grande Place des Terreaux, ses chevaux semblant galoper dans une mer immobile. 
+Il s’est également arrêté dans une boulangerie où il a longuement hésité entre un pain au chocolat, un croissant, et une brioche aux pralines, pâtisserie typiquement lyonnaise.
+Il a finalement opté pour cette dernière.
+</Text>
+<answer>
+{
+	"output": {
+		"Grammaire": {
+			"Sujets": {
+				"Total": 6,
+					"Details": {
+						"James": 1,
+						"Il": 5
+					}
+			},
+			"Verbes conjugués": {
+				"Total": 10,
+				"Par Temps": {
+					"Passé composé": {
+						"Total": 10,
+						"Verbes": [
+								{"Forme Conjuguee": "s’est levé", "Infinitif": "lever","Voix":"active"},
+								{"Forme Conjuguee": "a loué", "Infinitif": "louer","Voix":"active"},
+								{"Forme Conjuguee": "a parcouru", "Infinitif": "parcourir","Voix":"active"},
+								{"Forme Conjuguee": "a longé", "Infinitif": "longer","Voix":"active"},
+								{"Forme Conjuguee": "a traversé", "Infinitif": "traverser","Voix":"active"},
+								{"Forme Conjuguee": "a rejoint", "Infinitif": "rejoindre","Voix":"active"},
+								{"Forme Conjuguee": "a pu", "Infinitif": "pouvoir","Voix":"active"},
+								{"Forme Conjuguee": "s’est arrêté", "Infinitif": "arrêter","Voix":"active"},
+								{"Forme Conjuguee": "a hésité", "Infinitif": "hésiter","Voix":"active"},
+								{"Forme Conjuguee": "a opté", "Infinitif": "opter","Voix":"active"}
+							]
+					}
+				},
+				"Par mode":{
+					"Indicatif":{
+						"Total":10
+					}
+				}
+			},
+			"Champs Lexicaux": {
+				"ville": {
+					"Total": 7,
+						"Details": ["rues", "Lyon", "quais de la Saône", "presqu’île", "quais du Rhône", "fontaine Bartholdi", "Place des Terreaux"]
+					},
+				"Art et admiration": {
+					"Total": 5, 
+					"Details": ["admirer", "magnifique", "fontaine Bartholdi", "galoper"," mer immobile"]
+				},
+				"Gastronomie": {
+					"Total": 5, 
+					"Details": ["boulangerie","pain au chocolat","croissant","brioche aux pralines","pâtisserie"]
+				},
+				"Temps": {
+					"Total": 3, 
+					"Details": ["Ce matin", "longuement", "finalement"]
+				}
+			},
+			"Adjectifs":{
+				"Total":4,
+				"Details": ["Magnifique","Grande","Immobile","Lyonnaise"]
+			},
+			"Adverbes":{
+				"Total":6,
+				"Details": {
+					"Tôt":1,
+					"Puis":1,
+					"Typiquement":1,
+					"Où":1,
+					"Longuement":1,
+					"Finalement":1
+				}
+			},
+			"Prépositions":{
+				"Total":7,
+				"Details": {
+					"De":1,
+					"Dans":2,
+					"Sur":1,
+					"Entre":1,
+					"En":1,
+					"Pour":1
+				}
+			},
+			"Conjonctions de coordination":{
+				"Total":2,
+				"Details": {
+					"et":2
+				}
+			},
+			"Déterminants ":{
+				"Total":17,
+				"Par type":{
+					"Démonstratifs":{
+						"Total":2,
+						"Details": {
+							"Ce":1,
+							"Cette":1
+						}
+					},
+					"Définis":{
+						"Total":7,
+						"Details": {
+							"Les":3,
+							"La":4
+						}
+					},
+					"Indéfinis":{
+						"Total":6,
+						"Details": {
+							"Une":3,
+							"Un":3
+						}
+					},
+					"Définis contractés":{
+						"Total":2,
+						"Details": {
+							"Du":1,
+							"Des":1
+						}
+					}
+				}
+			},
+			"Compléments":{
+				"Total":19,
+				"Par type": {
+					"COD":{
+						"Total":9,
+						"Details": ["Un vélo","Les rues de Lyon","Les quais de la Saône","La presqu’île","Les quais du Rhône","La magnifique fontaine Bartholdi","Entre un pain au chocolat","un croissant","une brioche aux pralines"]
+					},
+					"CCT":{
+						"Total":3,
+						"Details": ["ce matin","longuement","tôt"]
+					},
+					"CCL":{
+						"Total":6,
+						"Details": ["dans les rues de Lyon","le long des quais de la Saône","la presqu’île","les quais du Rhône","sur la grande Place des Terreaux","dans une boulangerie"]
+					},
+					"CCM":{
+						"Total":1,
+						"Details": ["longuement"]
+					}
+				}
+			},
+			"Figure de style":{
+				"Total":4,
+				"Par type":{
+					"Énumération":{
+						"Total" : 2,
+						"Details":["Il a longé les quais de la Saône, traversé la presqu’île, puis rejoint les quais du Rhône.","il a longuement hésité entre un pain au chocolat, un croissant, et une brioche aux pralines, pâtisserie typiquement lyonnaise."]
+					},
+					"Hyperbole":{
+						"Total": 1,
+						"Details":["ses chevaux semblant galoper dans une mer immobile."]
+					},
+					"Personnification":{
+						"Total": 1,
+						"Details":["Ses chevaux semblant galoper dans une mer immobile"]
+					}
+				}
+			},
+			"Types de discours":{
+				"Total":2,
+				"Details":["Narratif","Descriptif"]
+			},
+			"Registres linguistiques":{
+				"Total":1,
+				"Details":["Courant"]
+			},
+			"Type de phrases":{
+				"Total": 5,
+				"Par forme":{
+					"Phrases positives": {"Total": 5},
+					"Phrases negatives": {"Total": 0},
+					"Phrases interrogative": {"Total": 0}
+				},
+				"Par structure":{
+					"Phrases nominales":{"Total":0},
+					"Phrases verbales":{"Total":5}
+				},
+				"Par voix":{
+					"Passive":{"Total":0},
+					"Active":{"Total":11}
+				},
+				"Par complexité":{
+					"Phrases simples": { "Total": 1 },	
+					"Phrases complexes": {
+						"Total": 4,
+						"Details": {
+							"Coordination": 2,
+							"Proposition participiale": 1,
+							"Relative et coordination": 1
+						}
+					}
+				}
+			}
+		}	
+	}
+}
+</answer>
+</exemple>
+
+

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Bot</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="icon" href="{% static 'img/logo/logo2.png' %}" type="image/png">
+</head>
+<body>
+    <div class="chat-container" id="chat-container">
+        <div class="message bot">
+            <div class="bubble"></div>
+        </div>
+    </div>
+    <div class="input-container">
+        <button type="button" onclick="sendImage()">
+            <img src="{% static 'img/send_img.png' %}" alt="Uploader image">
+        </button>
+
+        <input type="file" id="image-input" style="display: none;" onchange="previewImage(event)">
+
+
+
+        <label for="user-input"></label><input type="text" id="user-input" placeholder="Tapez /menu pour afficher les commandes" onkeydown="checkEnter(event)" />
+        <button onclick="sendMessage()">
+            <img src="{% static 'img/send.png' %}" alt="Envoyer">
+        </button>
+        <button>
+            <a href="{% url 'dashboard' %}" target="_blank">
+                <img src="{% static 'img/dash.png' %}" alt="Voir tableau de bord">
+            </a>
+        </button>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
