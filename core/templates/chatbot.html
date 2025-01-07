@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>French Bot</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="icon" href="{% static 'img/logo/logo2.png' %}" type="image/png">
+</head>
+<body>
+    <div class="chat-container" id="chat-container">
+        <div class="message bot">
+
+            <div class="bubble"></div>
+        </div>
+    </div>
+    <div class="logo-container" id="logo-id">
+        <img src="{% static 'img/logo/logo1.png' %}" alt="Main logo" class="logo">
+    </div>
+    <div class="input-container">
+        <button type="button" onclick="sendImage()" class="btn">
+            <img src="{% static 'img/send_img.png' %}" alt="Uploader image">
+        </button>
+        <input type="file" id="image-input" style="display: none;" onchange="previewImage(event)">
+        <label for="user-input"></label><input type="text" id="user-input" placeholder="Tapez /menu pour afficher les commandes" oninput="updateSuggestion()" onkeydown="checkEnter(event)" />
+        <div id="suggestion"></div>
+        <button onclick="sendMessage()" class="btn">
+            <img src="{% static 'img/send.png' %}" alt="Envoyer">
+        </button>
+        <button class="dash_btn">
+            <a id="dash_a" style="cursor: not-allowed;">
+                <img src="{% static 'img/dash.png' %}" alt="Voir tableau de bord">
+            </a>
+        </button>
+    </div>
+    <div class="footer-message">
+        <p class="footer-texte">Frensh BOT peut faire des erreurs.</p>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script>
+        const commandList = [
+                              "/menu",
+                              "/texte",
+                              "/bilan",
+                              "/verbe",
+                              "/sujet",
+                              "/champs_lexicaux",
+                              "/adjectif",
+                              "/adverbe",
+                              "/preposition",
+                              "/conjonction",
+                              "/determinant",
+                              "/complement",
+                              "/discours",
+                              "/registre",
+                              "/type_phrase",
+                              "/figure_style",
+                            ];
+
+        const userInput = document.getElementById("user-input");
+        const suggestionDiv = document.getElementById("suggestion");
+
+        // Fonction pour mettre à jour la suggestion
+        function updateSuggestion() {
+          const inputText = userInput.value;
+          const match = commandList.find((command) =>
+            command.startsWith(inputText)
+          );
+
+          if (match && inputText.length > 0) {
+            {#suggestionDiv.textContent = match + " # Tapez Tab pour compléter";#}
+            suggestionDiv.innerHTML = match + " # Tapez <span class='tab_btn'>Tab</span> pour compléter";
+            suggestionDiv.style.left = `${userInput.offsetLeft}px`;
+            suggestionDiv.style.top = `${userInput.offsetTop}px`;
+          } else {
+            suggestionDiv.textContent = "";
+          }
+        }
+    </script>
+</body>
+</html>

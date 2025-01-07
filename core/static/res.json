@@ -1,0 +1,254 @@
+{
+  "output": {
+    "Grammaire": {
+      "Sujets": {
+        "Total": 15,
+        "Details": {
+          "un vieil homme": 1,
+          "il": 7,
+          "son télescope": 1,
+          "une lumière étrange": 1,
+          "cette idée": 1,
+          "les étoiles": 1,
+          "son chat noir": 1,
+          "le ciel": 1,
+          "l'attente": 1
+        }
+      },
+      "Verbes": {
+        "Total": 22,
+        "Par Temps": {
+          "Imparfait": {
+            "Total": 6,
+            "Verbes": [
+              {"Forme Conjuguee": "observait", "Infinitif": "observer", "Voix": "active"},
+              {"Forme Conjuguee": "s'efforçait", "Infinitif": "s'efforcer", "Voix": "active"},
+              {"Forme Conjuguee": "se demandait", "Infinitif": "se demander", "Voix": "active"},
+              {"Forme Conjuguee": "dormait", "Infinitif": "dormir", "Voix": "active"},
+              {"Forme Conjuguee": "faisait", "Infinitif": "faire", "Voix": "active"},
+              {"Forme Conjuguee": "l'enflammait", "Infinitif": "enflammer", "Voix": "active"}
+            ]
+          },
+          "Passé composé": {
+            "Total": 2,
+            "Verbes": [
+              {"Forme Conjuguee": "avait été acheté", "Infinitif": "acheter", "Voix": "passive"},
+              {"Forme Conjuguee": "n'avait rien trouvé", "Infinitif": "trouver", "Voix": "active"}
+            ]
+          },
+          "Passé simple": {
+            "Total": 4,
+            "Verbes": [
+              {"Forme Conjuguee": "apparut", "Infinitif": "apparaître", "Voix": "active"},
+              {"Forme Conjuguee": "nota", "Infinitif": "noter", "Voix": "active"},
+              {"Forme Conjuguee": "sembla", "Infinitif": "sembler", "Voix": "active"},
+              {"Forme Conjuguee": "décida", "Infinitif": "décider", "Voix": "active"}
+            ]
+          },
+          "Présent": {
+            "Total": 2,
+            "Verbes": [
+              {"Forme Conjuguee": "reste", "Infinitif": "rester", "Voix": "active"},
+              {"Forme Conjuguee": "continuaient", "Infinitif": "continuer", "Voix": "active"}
+            ]
+          }
+        },
+        "Par mode": {
+          "Indicatif": {
+            "Total": 14
+          },
+          "Infinitif": {
+            "Total": 4
+          }
+        }
+      },
+      "Champs Lexicaux": {
+        "Astronomie": {
+          "Total": 7,
+          "Details": ["étoiles", "télescope", "univers", "cosmos", "lumière", "ciel", "découvertes"]
+        },
+        "Temps": {
+          "Total": 6,
+          "Details": ["chaque soir", "hier", "ce soir-là", "soudainement", "lendemain matin", "attente"]
+        },
+        "Émotions": {
+          "Total": 4,
+          "Details": ["fascination", "joie enfantine", "excitation", "espoir"]
+        }
+      },
+      "Adjectifs": {
+        "Total": 12,
+        "Details": ["petit", "verdoyante", "vieil", "scintillantes", "bancale", "infini", "vaste", "étrange", "extraordinaire", "enfantine", "usée", "noir"]
+      },
+      "Adverbes": {
+        "Total": 4,
+        "Details": {
+          "délicatement": 1,
+          "soudainement": 1,
+          "soigneusement": 1,
+          "profondément": 1
+        }
+      },
+      "Prépositions": {
+        "Total": 8,
+        "Details": {
+          "sur": 2,
+          "dans": 2,
+          "avec": 1,
+          "à": 2,
+          "de": 1
+        }
+      },
+      "Conjonctions de coordination": {
+        "Total": 4,
+        "Details": {
+          "mais": 2,
+          "car": 1,
+          "et": 1
+        }
+      },
+      "Déterminants": {
+        "Total": 18,
+        "Par type": {
+          "Définis": {
+            "Total": 7,
+            "Details": {
+              "le": 2,
+              "les": 2,
+              "la": 2,
+              "l'": 1
+            }
+          },
+          "Indéfinis": {
+            "Total": 4,
+            "Details": {
+              "un": 3,
+              "une": 1
+            }
+          },
+          "Possessifs": {
+            "Total": 4,
+            "Details": {
+              "son": 3,
+              "sa": 1
+            }
+          },
+          "Démonstratifs": {
+            "Total": 2,
+            "Details": {
+              "ce": 2
+            }
+          }
+        }
+      },
+      "Compléments": {
+        "Total": 15,
+        "Par type": {
+          "CCL": {
+            "Total": 4,
+            "Details": [
+              "sur une colline verdoyante",
+              "sur une table bancale",
+              "dans le ciel",
+              "à côté de lui"
+            ]
+          },
+          "CCT": {
+            "Total": 4,
+            "Details": [
+              "chaque soir",
+              "hier",
+              "ce soir-là",
+              "le lendemain matin"
+            ]
+          },
+          "CCM": {
+            "Total": 3,
+            "Details": [
+              "avec fascination",
+              "délicatement",
+              "soigneusement"
+            ]
+          },
+          "COD": {
+            "Total": 4,
+            "Details": [
+              "les étoiles scintillantes",
+              "l'univers infini",
+              "ses observations",
+              "l'espoir"
+            ]
+          }
+        }
+      },
+      "Types de discours": {
+        "Total": 3,
+        "Details": ["Narratif", "Descriptif", "Dialogué"]
+      },
+      "Figures de style": {
+        "Total": 3,
+        "Par type": {
+          "Personnification": {
+            "Total": 1,
+            "Details": ["les étoiles continuaient de briller, indifférentes à sa passion"]
+          },
+          "Métaphore": {
+            "Total": 1,
+            "Details": ["sembla éteindre l'espoir"]
+          },
+          "Hyperbole": {
+            "Total": 1,
+            "Details": ["l'univers infini"]
+          }
+        }
+      },
+      "Registres linguistiques": {
+        "Total": 2,
+        "Details": ["Soutenu", "Courant"]
+      },
+      "Type de phrases": {
+        "Total": 12,
+        "Par forme": {
+          "Phrases positives": {
+            "Total": 9
+          },
+          "Phrases négatives": {
+            "Total": 1
+          },
+          "Phrases interrogatives": {
+            "Total": 2
+          }
+        },
+        "Par structure": {
+          "Phrases nominales": {
+            "Total": 0
+          },
+          "Phrases verbales": {
+            "Total": 12
+          }
+        },
+        "Par voix": {
+          "Passive": {
+            "Total": 1
+          },
+          "Active": {
+            "Total": 13
+          }
+        },
+        "Par complexité": {
+          "Phrases simples": {
+            "Total": 5
+          },
+          "Phrases complexes": {
+            "Total": 7,
+            "Details": {
+              "Coordination": 3,
+              "Juxtaposition": 2,
+              "Subordination": 2
+            }
+          }
+        }
+      }
+    }
+  }
+}

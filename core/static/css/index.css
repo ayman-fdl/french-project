@@ -1,0 +1,265 @@
+@font-face {
+    font-family: 'Robot'; /* Nom que tu donneras à ta police */
+    src: url('Robot_Font.otf') format('woff2'); /* Chemin vers le fichier de police */
+    font-weight: normal; /* Poids de la police (normal, bold, etc.) */
+    font-style: normal; /* Style de la police (normal, italic, etc.) */
+}
+
+* {
+    font-family: Inter, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Arial, sans-serif;
+    background-color: #f2f7ff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto 90px;
+    padding: 20px;
+    background-color: #f2f7ff;
+    overflow-y: auto;
+}
+
+.chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: #4f46e5;
+    border-radius: 10px;
+    border: 2px solid #f2f7ff;
+}
+
+.message {
+    margin: 10px 0;
+    display: flex;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message .bubble {
+    /**/
+    padding: 10px 15px;
+    border-radius: 15px;
+}
+
+.message.user .bubble {
+    max-width: 50%;
+    background-color: #4f46e5;
+    color: white;
+}
+
+.message.bot .bubble {
+    color: black;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid white;
+    border-radius: 20px;
+    z-index: 1;
+    background: none;
+}
+#suggestion {
+    position: absolute;
+    color: #999999;
+    font-size: 16px;
+    padding-left: 11px;
+    padding-top: 11px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.input-container input:focus {
+    border-color: white;
+    outline: none;
+}
+
+.btn {
+    margin-left: 10px;
+    background-color: #4f46e5;
+    width: 40px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.dash_btn {
+    margin-left: 10px;
+    background-color: #aaaaaa;
+    width: 40px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: not-allowed;
+}
+
+/* Style actif */
+.dash_btn_act {
+    margin-left: 10px;
+    background-color: #4f46e5;
+    width: 40px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #4338ca;
+}
+
+/*****************************************/
+/* Classe pour centrer le conteneur */
+.input-container-center {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    width: 50%;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50px;
+    border: 2px solid #e5e7eb;
+    display: flex;
+}
+
+/* Classe pour placer le conteneur en bas */
+.input-container-bottom {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    width: 50%;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50px;
+    border: 2px solid #e5e7eb;
+    z-index: 1001;
+    display: flex;
+}
+
+/*Logo*/
+.logo {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%; /* Ajuste la taille selon les besoins */
+    height: 200px;
+}
+
+.message.bot {
+    display: flex;
+    margin: 10px 0;
+}
+
+.profile-pic {
+    margin-right: 10px; /* Espace entre l'image et le texte */
+}
+
+.bot-profile {
+    width: 40px; /* Taille de l'image du profil */
+    height: 40px; /* Taille de l'image du profil */
+}
+
+.footer-message {
+    position: fixed; /* Fixe le div en bas de la fenêtre */
+    bottom: 0; /* Aligné en bas */
+    left: 0; /* Étend le div sur toute la largeur */
+    width: 100%; /* Largeur complète */
+    background-color: #f2f7ff; /* Couleur de fond différente */
+    color: #444444; /* Texte en blanc pour le contraste */
+    text-align: center; /* Centrer le texte */
+    font-size: 12px; /* Taille du texte */
+    line-height: 1px; /* Alignement vertical (30px peut être ajusté selon la hauteur souhaitée) */
+    height: 25px; /* Hauteur totale du div */
+    z-index: 1000; /* S'assurer que le div est au-dessus des autres éléments */
+}
+
+.tab_btn {
+    background-color: #999999;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+/***********************************************/
+/* Styles pour Tablettes (768px et moins) */
+@media (max-width: 768px) {
+    .chat-container {
+        width: 80%; /* Réduit la largeur pour tablettes */
+        margin: 0 auto 80px; /* Moins de marge */
+        padding: 15px;
+    }
+
+    .input-container-bottom {
+        width: 80%; /* Réduction de la barre d'entrée */
+        padding: 8px;
+    }
+
+    .input-container input {
+        font-size: 14px; /* Taille réduite pour l'input */
+        padding: 8px;
+    }
+
+    .btn, .dash_btn {
+        width: 35px; /* Réduit la taille des boutons */
+        height: 35px;
+    }
+
+    .logo {
+        height: 150px; /* Taille du logo réduite */
+    }
+}
+
+/* Styles pour Téléphones (480px et moins) */
+@media (max-width: 480px) {
+    .chat-container {
+        width: 95%; /* Presque pleine largeur */
+        margin: 0 auto 70px; /* Moins de marge */
+        padding: 10px; /* Réduction du padding */
+    }
+
+    .input-container-bottom {
+        width: 95%; /* Barre d'entrée adaptée */
+        padding: 5px;
+        gap: 5px; /* Réduit l'espacement entre les boutons et l'input */
+    }
+
+    .input-container input {
+        font-size: 12px; /* Taille réduite pour l'input */
+        padding: 6px;
+    }
+
+    .btn, .dash_btn {
+        width: 30px; /* Petits boutons pour téléphones */
+        height: 30px;
+    }
+
+    .logo {
+        height: 120px; /* Réduction supplémentaire pour le logo */
+    }
+    .btn img,
+    .dash_btn img {
+        width: 18px; /* Réduction pour s'adapter aux petits boutons */
+        height: 18px;
+        margin: auto; /* Centrer l'image dans le bouton */
+    }
+}

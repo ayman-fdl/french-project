@@ -1,0 +1,269 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/iconly/bold.css' %}">
+    <link rel="stylesheet" href="{% static 'vendors/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <link rel="stylesheet" href="{% static 'css/otherStyling.css' %}">
+    <link rel="icon" href="{% static 'img/logo/logo2.png' %}" type="image/png">
+</head>
+
+<body>
+    <div id="app">
+        <div id="main container">
+            <div class="container">
+                <h3>Analyse des statistiques linguistiques</h3>
+            </div>
+            <div class="page-content container">
+                <section class="row">
+                    <div class="col">
+                        <div class="row justify-content-center">
+                            <div class="col-auto px-3 py-4-5">
+                                <a href="#grammaireSection" class="btn btn-primary">Grammaire</a>
+                            </div>
+                            <div class="col-auto px-3 py-4-5">
+                                <a href="#verbesSection" class="btn btn-primary">Verbes</a>
+                            </div>
+                            <div class="col-auto px-3 py-4-5">
+                                <a href="#phrasesSection" class="btn btn-primary">Phrases</a>
+                            </div>
+                            <div class="col-auto px-3 py-4-5">
+                                <a href="#texteSection" class="btn btn-primary">Texte</a>
+                            </div>
+                            <div class="col-auto px-3 py-4-5">
+                                <a href="#about" class="btn btn-primary">À propos</a>
+                            </div>
+                            <div class="col-auto px-3 py-4-5">
+                                <div id="exportPdfButton" class="btn btn-success">Exporter le Rapport</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-lg-4 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon purple">
+                                                    <i class="iconly-boldShow"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Nombre de mots</h6>
+                                                <h6 class="font-extrabold mb-0"><div id="resultatMots"></div></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon blue">
+                                                    <i class="iconly-boldPaper"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Nombre de Phrases</h6>
+                                                <h6 class="font-extrabold mb-0"><div id="resultatPhrases"></div></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4 col-md-6">
+                                <div class="card">
+                                    <div class="card-body px-3 py-4-5">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="stats-icon red">
+                                                    <i class="iconly-boldVoice"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h6 class="text-muted font-semibold">Langue</h6>
+                                                <h6 class="font-extrabold mb-0">Francais</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Texte à Traiter</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div id="texteATraiter">
+                                        <p><div id="resultatTextes"></div></p> <!-- Texte à traiter ici-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4>Analyse de fréquence des composants textuels</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="chart-analyse-composants"></div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div id="grammaireSection" class="row">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Grammaire</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="grammairePlotsContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="verbesSection" class="row">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Verbes</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="verbTensePie"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="verbModeBar"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="phrasesSection" class="row">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Phrases (Répartition des Types de Phrases)</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row" id="phrasesPlots">
+                                        <!-- <div class="col">
+                                            <div id="phraseTypeStructureDonut"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="phraseTypeFormeBar"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="phraseTypeComplexitePie"></div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="texteSection" class="row">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Texte</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="lexicalBarChart"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div id="figuresDeStyleDonut"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row equal-height">
+                                        <div class="col-md-6">
+                                            <div class="alert alert-light-primary text-center">
+                                                <h5>Types de discours</h5>
+                                                <div class="content">
+                                                    <ul id="typesDeDiscoursList" class="list-unstyled"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="alert alert-light-primary text-center">
+                                                <h5>Registres linguistiques</h5>
+                                                <div class="content">
+                                                    <ul id="registresLinguistiquesList" class="list-unstyled"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="about" class="row">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>À propos du projet</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p>Ce projet vise à analyser les statistiques linguistiques d'un texte en français.
+                                        Il utilise des techniques de traitement automatique du langage naturel (TALN)
+                                        pour extraire et visualiser des informations telles que la fréquence des
+                                        composants textuels, les types de phrases, les catégories lexicales, et plus
+                                        encore.</p>
+                                    <p>Les principales fonctionnalités du projet incluent :</p>
+                                    <ul>
+                                        <li>Analyse de la fréquence des composants textuels (sujets, verbes, adjectifs,
+                                            etc.)</li>
+                                        <li>Visualisation des types de phrases et de leur complexité</li>
+                                        <li>Répartition des catégories lexicales</li>
+                                        <li>Analyse des registres linguistiques et des figures de style</li>
+                                    </ul>
+                                    <p>Ce projet a été réalisé par Aymane Fadili, Ait Mouhamed Firdaous et Hamza
+                                        Bouragaa dans le cadre du module de Traitement Automatique du Langage Naturel
+                                        (NLP) en 2ème année de Master Science des Données à l'Université des Sciences
+                                        Semlalia à Marrakech.</p>
+                                    <p>Encadré par Mr Mohamed Amine CHADI, nous avons travaillé avec l'API Claude et
+                                        effectué du prompt engineering pour corriger le texte, extraire les statistiques
+                                        et valider les résultats obtenus.</p>
+                                    <p>Pour plus d'informations, veuillez visiter le <a
+                                            href="https://github.com/ayman-fdl/french-project"
+                                            target="_blank">repository GitHub</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="{% static 'vendors/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script> -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="{% static 'vendors/apexcharts/apexcharts.js' %}"></script>
+
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap"></script> -->
+    <!-- <script src="{% static 'vendors/chartjs/Chart.min.js' %}"></script> -->
+    <!-- <script src="{% static 'js/pages/ui-chartjs.js' %}"></script> -->
+
+    <script src="{% static 'js/pages/dashboard.js' %}"></script>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <button onclick="scrollToTop()" id="backToTopBtn" title="Go to top">Top</button>
+    <script>
+        loadData();
+    </script>
+
+</body>
+
+</html>
